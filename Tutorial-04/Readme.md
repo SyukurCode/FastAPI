@@ -31,7 +31,7 @@ from database import SessionLocal
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # Auth schema
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 # Verify password
 def verify_password(plain_password, hashed_password):
@@ -54,7 +54,7 @@ def create_token(data: dict, expires_delta: Optional[timedelta] = None):
     return encoded_jwt
 
 # Decode token
-def current_user(token: str):
+def current_user(token: Annotated[str,Depends(OAuth2PasswordBearer)]):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
