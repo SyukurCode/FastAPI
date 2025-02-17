@@ -4,11 +4,11 @@ import api.user
 from database import *                 
 import schemas, crud, re
 from sqlalchemy.orm import Session 
-from api import user
+import api
 
 app = FastAPI()
 
-app.include_router(user.router)
+app.include_router(api.user.router)
 
 # add CORS 
 app.add_middleware(

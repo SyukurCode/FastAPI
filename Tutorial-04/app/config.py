@@ -3,7 +3,7 @@ import os
 # DB
 user = os.getenv('POSTGRES_USER','admin')
 password = os.getenv('POSTGRES_PASSWORD','qwe123***')
-host = os.getenv('POSTGRES_HOST','localhost')
+host = os.getenv('POSTGRES_HOST','172.20.6.217')
 database = os.getenv('POSTGRES_DB','demo')
 port = os.getenv('POSTGRES_PORT','5432')
 

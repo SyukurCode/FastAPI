@@ -1,0 +1,28 @@
+version: "3.8"
+services:  
+  app:
+    container_name: demo_app
+    build:
+      context: ./
+      dockerfile : Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=qwe123***
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=fastapi
+      - POSTGRES_PORT=5432
+    depends_on:
+      - db
+  db:
+    container_name: postgres
+    environment:
+      - POSTGRES_PASSWORD=qwe123***
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=fastapi
+    image: postgres:alpine3.20
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/var/lib/postgresql/data
